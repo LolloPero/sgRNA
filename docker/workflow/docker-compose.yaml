@@ -1,0 +1,16 @@
+#########################################################################################
+# Docker-compose file for sgRNA workflow                                  #
+#########################################################################################
+version: "3.4"
+networks:
+    sgRNA_network:
+        external: true
+services:
+    sgRNA_workflow:
+        image: sgRNA_workflow:1.0
+        networks:
+            - sgRNA_network
+        build:
+            network: host
+            context: ./
+            dockerfile: Dockerfile

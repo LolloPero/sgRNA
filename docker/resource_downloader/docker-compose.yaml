@@ -1,0 +1,18 @@
+#########################################################################################
+# Docker-compose file for sgRNA workflow                                  #
+#########################################################################################
+version: "3.4"
+networks:
+    sgRNA_network:
+        external: true
+services:
+    genome_data_downloader:
+        image: genome_data_downloader:1.0
+        networks:
+            - sgRNA_network
+        build:
+            network: host
+            context: ./
+            dockerfile: Dockerfile
+        volumes:
+          - ./../../resources:/app/resources
