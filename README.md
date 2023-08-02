@@ -29,23 +29,18 @@ output/
 ## Docker images setup
 The following assumes that *Docker* is already installed in the system. 
 
-First off, resource files (Genome reference and Genome annotation) need to be put in place. From terminal, execute the following:
+First off, resource files (Genome reference and Genome annotation) need to be put in place. From terminal, execute the following :
 
-create docker image
+(this will run for a long time)
 ```
 cd docker/resource_downloader
-docker build -t genome_data_downloader:1.0 .
-```
-run docker container - will take a long time
-```
-cd ../../
-docker run -v $(pwd)/resources:/app/resources genome_data_downloader:1.0
+docker-compose up --build
 ```
 
 Second, create the docker image containing the necessary softwares to run the Nextflow pipeline:
 ```
 cd docker/workflow
-docker build -t sgRNA_workflow:1.0 .
+docker-compose up
 ```
 
 # Execute workflow
